@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>kvkk-gdpr-consent demo</title>
+  <link rel="stylesheet" href="../src/consent.css">
+  <style>
+    body { margin: 0; padding: 48px 20px 200px; font: 16px/1.6 system-ui, sans-serif; color: #141519; background: #f8f8f4; }
+    main { max-width: 640px; margin: 0 auto; }
+    code { background: #ecece6; padding: 1px 6px; border-radius: 6px; }
+    .status { padding: 12px 16px; border-radius: 12px; background: #fff; border: 1px solid #e3e3dc; }
+    button.link { border: 0; padding: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+  </style>
+  <!-- Kept inert until the visitor accepts: any script can be held back like this. -->
+  <script type="text/plain" data-consent="analytics">
+    document.getElementById('analytics').textContent = 'Analytics script: running (it was held back until you accepted).';
+  </script>
+</head>
+<body>
+  <main>
+    <h1>kvkk-gdpr-consent</h1>
+    <p>This demo holds back a script marked <code>data-consent="analytics"</code> until you click <b>Accept</b>. On a real
+      site, <code>data-ga="G-…"</code> loads Google Analytics the same way; it is left out here so the demo makes no
+      requests to Google.</p>
+    <p class="status" id="analytics">Analytics script: not running.</p>
+    <p class="status">Stored choice: <b id="choice">none</b></p>
+    <p><button class="link" type="button" data-consent-open>Cookie settings</button> · try it after you choose.
+      <a href="?lang=tr" id="tr">Türkçe</a></p>
+  </main>
+
+  <script>
+    // demo only: show the stored choice, switch the language with ?lang=tr, and avoid the reload after a withdrawal
+    if (new URLSearchParams(location.search).get('lang') === 'tr') { document.documentElement.lang = 'tr'; }
+    var show = function () { document.getElementById('choice').textContent = window.KvkkConsent ? (KvkkConsent.choice() || 'none') : 'none'; };
+    document.addEventListener('consentchange', function (e) {
+      show();
+      if (!e.detail.analytics) { e.preventDefault(); document.getElementById('analytics').textContent = 'Analytics script: stopped. On a real site the page reloads here.'; }
+    });
+    window.addEventListener('load', show);
+  </script>
+  <script src="../src/consent.js" data-privacy="https://irodev.net/gizlilik#cookies" defer></script>
+</body>
+</html>

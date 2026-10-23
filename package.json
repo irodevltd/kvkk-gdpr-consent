@@ -1,0 +1,36 @@
+{
+  "name": "kvkk-gdpr-consent",
+  "version": "1.0.0",
+  "description": "A small, dependency-free cookie banner for Google Analytics under KVKK and UK/EU GDPR: nothing loads before Accept, Reject is as easy as Accept, and withdrawing deletes the cookies.",
+  "main": "src/consent.js",
+  "style": "src/consent.css",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test \"tests/**/*.test.mjs\""
+  },
+  "keywords": [
+    "kvkk",
+    "gdpr",
+    "cookie banner",
+    "cookie consent",
+    "çerez",
+    "google analytics",
+    "ga4",
+    "privacy"
+  ],
+  "author": "İRODEV LTD <info@irodev.net> (https://irodev.net)",
+  "license": "MIT",
+  "homepage": "https://github.com/irodevltd/kvkk-gdpr-consent",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irodevltd/kvkk-gdpr-consent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/irodevltd/kvkk-gdpr-consent/issues"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.3"
+  }
+}

@@ -1,0 +1,85 @@
+/* kvkk-gdpr-consent · MIT · © 2026 İRODEV LTD
+   Change the look with the custom properties below; both buttons stay the same size on purpose (a "Reject" that is
+   harder to see than "Accept" is not a free choice). */
+.consent-banner {
+  --consent-bg: #141519;
+  --consent-fg: #f4f4f1;
+  --consent-muted: #b9bbc1;
+  --consent-accept-bg: #d8f23e;
+  --consent-accept-fg: #141519;
+  --consent-reject-bg: transparent;
+  --consent-reject-fg: #f4f4f1;
+  --consent-border: rgb(255 255 255 / 0.28);
+  --consent-radius: 16px;
+  --consent-font: inherit;
+
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 2147483000;
+  box-sizing: border-box;
+  width: min(640px, calc(100% - 32px));
+  padding: 16px 18px;
+  border-radius: var(--consent-radius);
+  background: var(--consent-bg);
+  color: var(--consent-fg);
+  font: 14px/1.5 var(--consent-font, system-ui, sans-serif);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.28);
+}
+
+.consent-banner__text {
+  margin: 0 0 12px;
+  color: var(--consent-muted);
+}
+
+.consent-banner__text a {
+  color: var(--consent-fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.consent-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.consent-banner__btn {
+  flex: 0 1 140px;
+  min-height: 40px;
+  padding: 8px 18px;
+  border: 1px solid var(--consent-border);
+  border-radius: 999px;
+  font: 600 14px/1.2 var(--consent-font, system-ui, sans-serif);
+  cursor: pointer;
+}
+
+.consent-banner__btn--reject {
+  background: var(--consent-reject-bg);
+  color: var(--consent-reject-fg);
+}
+
+.consent-banner__btn--accept {
+  background: var(--consent-accept-bg);
+  color: var(--consent-accept-fg);
+  border-color: var(--consent-accept-bg);
+}
+
+.consent-banner__btn:focus-visible {
+  outline: 2px solid var(--consent-accept-bg);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .consent-banner__btn {
+    flex: 1 1 0;
+  }
+}
+
+@media print {
+  .consent-banner {
+    display: none;
+  }
+}
